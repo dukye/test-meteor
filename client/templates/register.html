@@ -1,0 +1,81 @@
+
+<template name="register10">
+	<div class="container">
+		<h1>Register</h1>
+		<form action="/sign-up" id="signUpForm" method="post">
+	        <input id="signUpEmail" name="email" placeholder="Email Address" type="text" >
+	        <input id="signUpPassword" name="password" placeholder="Password" type="password">
+	        <input id="signUpPasswordConfirm" name="password-confirm" placeholder="Confirm" type="password">
+	        <input class="btn-submit" type="submit" value="Join Meteorites!">
+	    </form>
+	</div>
+</template>
+
+
+<template name="register">
+	<div class="container">
+		<h1>Register</h1>
+		{{#autoForm id="insertUser" doc=this type="method" schema="Schemas.User" meteormethod="autoFormCreateUser"}}
+			<div class="form-group {{#if afFieldIsInvalid name='username'}}has-error{{/if}}">
+  				<label class="control-label">{{afFieldLabelText name='username'}}</label>
+    			{{> afFieldInput name='username' id='username'}}
+  				{{#if afFieldIsInvalid name='username'}}
+				<span class="help-block">{{{afFieldMessage name='username'}}}</span>
+				{{/if}}
+  			</div>
+			<div class="form-group {{#if afFieldIsInvalid name='password'}}has-error{{/if}}">
+  				<label class="control-label">{{afFieldLabelText name='password'}}</label>
+    			{{> afFieldInput name='password' id='password'}}
+  				{{#if afFieldIsInvalid name='password'}}
+				<span class="help-block">{{{afFieldMessage name='password'}}}</span>
+				{{/if}}
+  			</div>
+			<div class="form-group {{#if afFieldIsInvalid name='confirmPassword'}}has-error{{/if}}">
+  				<label class="control-label">{{afFieldLabelText name='confirmPassword'}}</label>
+    			{{> afFieldInput name='confirmPassword'}}
+  				{{#if afFieldIsInvalid name='confirmPassword'}}
+				<span class="help-block">{{{afFieldMessage name='confirmPassword'}}}</span>
+				{{/if}}
+  			</div>
+			<div class="form-group {{#if afFieldIsInvalid name='emails.0.address'}}has-error{{/if}}">
+  				<label class="control-label">Email</label>
+    			{{> afFieldInput name='emails.0.address' id='email'}}
+  				{{#if afFieldIsInvalid name='emails.0.address'}}
+				<span class="help-block">{{{afFieldMessage name='emails.0.address'}}}</span>
+				{{/if}}
+				{{> afFieldInput type="hidden" value="false" name='emails.0.verified'}}
+  			</div>
+  			<!--
+			<div class="form-group {{#if afFieldIsInvalid name='email'}}has-error{{/if}}">
+  				<label class="control-label">{{afFieldLabelText name='email'}}</label>
+    			{{> afFieldInput name='email' id='email'}}
+  				{{#if afFieldIsInvalid name='email'}}
+				<span class="help-block">{{{afFieldMessage name='email'}}}</span>
+				{{/if}}
+  			</div>
+  			-->
+			<div class="form-group {{#if afFieldIsInvalid name='profile.firstName'}}has-error{{/if}}">
+  				<label class="control-label">{{afFieldLabelText name='profile.firstName'}}</label>
+    			{{> afFieldInput name='profile.firstName' id='firstName'}}
+  				{{#if afFieldIsInvalid name='profile.firstName'}}
+				<span class="help-block">{{{afFieldMessage name='profile.firstName'}}}</span>
+				{{/if}}
+  			</div>
+			<div class="form-group {{#if afFieldIsInvalid name='profile.lastName'}}has-error{{/if}}">
+  				<label class="control-label">{{afFieldLabelText name='profile.lastName'}}</label>
+    			{{> afFieldInput name='profile.lastName' id='lastName'}}
+  				{{#if afFieldIsInvalid name='profile.lastName'}}
+				<span class="help-block">{{{afFieldMessage name='profile.lastName'}}}</span>
+				{{/if}}
+  			</div>
+  			<!--
+			{{> afQuickField name='profile.country'}}
+			{{#afEachArrayItem name="profile.country"}}
+				{{> afFieldInput name="this.current.name"}}
+				{{> afFieldInput name="this.current.code"}}
+			{{/afEachArrayItem}}
+			-->
+  			<button class="btn btn-primary">Send</button>
+		{{/autoForm}}
+	</div>
+</template>

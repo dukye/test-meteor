@@ -1,0 +1,30 @@
+<template name="login">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">
+			
+				<h1>Login</h1>
+				<form id="login-form" action="action">
+				      <div class="form-group">
+						<input type="email" id="login-email" class="form-control" placeholder="email@domain.com" />
+				      </div>
+				      <div class="form-group">
+						<input type="password" id="login-password" class="form-control" placeholder="*****" />
+				      </div>
+					<button id="login-button" class="btn btn-primary btn-block">Sign in</button>
+				</form>
+				
+				<h1>Login with social (testing)</h1>
+				<button class="btn btn-primary btn-xs login-twitter"><i class="fa fa-twitter-square"> Login with twitter</i></button>
+				<button class="btn btn-primary btn-xs login-facebook"><i class="fa fa-facebook-square"> Login with facebook</i></button>
+				<button class="btn btn-primary btn-xs login-google"><i class="fa fa-google-plus-square"> Login with google (not working)</i></button>
+
+			</div>
+
+		</div>
+	</div>
+</template>
+
+<template name="user">
+{{address}}
+</template>

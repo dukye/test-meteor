@@ -1,0 +1,14 @@
+<template name="registerStep2">
+	<div class="container">
+		<h1>Register</h1>
+
+		{{#autoForm id="insertUser" doc=this type="method" schema="Schemas.User" meteormethod="autoFormCreateUserStep2"}}
+		<fieldset>
+		{{> afObjectField name='profile'}}
+		</fieldset>
+
+		<button type="submit" class="btn btn-primary">Insert</button>
+		{{/autoForm}}
+  </div>
+
+</template>

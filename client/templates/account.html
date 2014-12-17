@@ -1,0 +1,52 @@
+<template name="account">
+	<div class="container">
+		<h1>User account</h1>
+
+		{{#autoForm id="updateUser" type="method" schema="Schemas.User" meteormethod="autoFormCreateUser"}}
+			<div class="form-group {{#if afFieldIsInvalid name='username'}}has-error{{/if}}">
+  				<label class="control-label">{{afFieldLabelText name='username'}}</label>
+    			{{> afFieldInput name='username' id='username' value=currentUser.username}}
+  				{{#if afFieldIsInvalid name='username'}}
+				<span class="help-block">{{{afFieldMessage name='username'}}}</span>
+				{{/if}}
+  			</div>
+			<div class="form-group {{#if afFieldIsInvalid name='emails.0.address'}}has-error{{/if}}">
+  				<label class="control-label">Email</label>
+    			{{> afFieldInput name='emails.0.address' id='email' value=firstEmail }}
+  				{{#if afFieldIsInvalid name='emails.0.address'}}
+				<span class="help-block">{{{afFieldMessage name='emails.0.address'}}}</span>
+				{{/if}}
+				{{> afFieldInput type="hidden" value="false" name='emails.0.verified'}}
+  			</div>
+			<div class="form-group {{#if afFieldIsInvalid name='profile.firstName'}}has-error{{/if}}">
+  				<label class="control-label">{{afFieldLabelText name='profile.firstName'}}</label>
+    			{{> afFieldInput name='profile.firstName' value=currentUser.profile.firstName}}
+  				{{#if afFieldIsInvalid name='profile.firstName'}}
+				<span class="help-block">{{{afFieldMessage name='profile.firstName'}}}</span>
+				{{/if}}
+  			</div>
+			<div class="form-group {{#if afFieldIsInvalid name='profile.lastName'}}has-error{{/if}}">
+  				<label class="control-label">{{afFieldLabelText name='profile.lastName'}}</label>
+    			{{> afFieldInput name='profile.lastName' value=currentUser.profile.lastName}}
+  				{{#if afFieldIsInvalid name='profile.lastName'}}
+				<span class="help-block">{{{afFieldMessage name='profile.lastName'}}}</span>
+				{{/if}}
+  			</div>
+			<div class="form-group {{#if afFieldIsInvalid name='createdAt'}}has-error{{/if}}">
+  				<label class="control-label">{{afFieldLabelText name='createdAt'}}</label>
+    			{{> afFieldInput name='createdAt'}}
+  				{{#if afFieldIsInvalid name='createdAt'}}
+				<span class="help-block">{{{afFieldMessage name='createdAt'}}}</span>
+				{{/if}}
+  			</div>
+  			<!--
+			{{> afQuickField name='profile.country'}}
+			{{#afEachArrayItem name="profile.country"}}
+				{{> afFieldInput name="this.current.name"}}
+				{{> afFieldInput name="this.current.code"}}
+			{{/afEachArrayItem}}
+			-->
+  			<button class="btn btn-primary">Send</button>
+		{{/autoForm}}
+	</div>
+</template>
